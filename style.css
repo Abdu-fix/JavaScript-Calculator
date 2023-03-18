@@ -1,8 +1,11 @@
+body{
+    background-color: #1a5c85;
+}
 .container {
     display: flex;
     justify-content: center;
     align-item: center;
-    margin-top:25%;
+    margin-top:10%;
     
 }
 #calculator {
@@ -16,16 +19,20 @@
     flex-direction:column;
     justify-content: center;
     align-items: center;
+    font-size: xxxlarge;
     
     
 }
 input {
     width: 50px;
     height: 50px;
+    background-color: #D6D58E;
+    font-size: xxlarger;
 }
 #display{
     width: 200px;
     height: 50px;
+    background-color: #d2e591;
 }
 .raw{
     margin: 0;
