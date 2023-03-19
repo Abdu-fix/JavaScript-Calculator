@@ -20,13 +20,15 @@ body{
     justify-content: center;
     align-items: center;
     font-size: xxxlarge;
+    background-color: #154B52;
+
     
     
 }
 input {
     width: 50px;
     height: 50px;
-    background-color: #D6D58E;
+    background-color: #d2e591;
     font-size: xxlarger;
 }
 #display{
