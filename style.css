@@ -4,7 +4,7 @@ body{
 .container {
     display: flex;
     justify-content: center;
-    align-item: center;
+    align-items: center;
     margin-top:10%;
     
 }
@@ -37,10 +37,6 @@ input {
 .raw{
     margin: 0;
 
-}
-body{
-
-    
 }
 
   
