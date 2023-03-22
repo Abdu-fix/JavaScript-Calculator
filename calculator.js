@@ -49,26 +49,22 @@ function calculate() {
   }
 }
 
-// Attach event listeners to number buttons
 numberButtons.forEach(button => {
   button.addEventListener('click', () => {
     appendToDisplay(button.value);
   });
 });
 
-// Attach event listeners to operator buttons
 operatorButtons.forEach(button => {
   button.addEventListener('click', () => {
     setOperator(button.value);
   });
 });
 
-// Attach event listener to clear button
 clearButton.addEventListener('click', () => {
   clearAll();
 });
 
-// Attach event listener to equals button
 equalsButton.addEventListener('click', () => {
   calculate();
 });
