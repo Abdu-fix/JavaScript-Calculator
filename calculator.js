@@ -2,10 +2,14 @@ let firstNumber = '';
 let secondNumber = '';
 let operator = '';
 let result = '';
-
+const display = document.querySelector('#display');
+const numberButtons = document.querySelectorAll('.number');
+const operatorButtons = document.querySelectorAll('.operator');
+const clearButton = document.querySelector('#clear');
+const equalsButton = document.querySelector('#equals');
 
 function appendToDisplay(num) {
-  document.getElementById('display').value += num;
+  display.value += num;
 }
 
 function clearAll() {
@@ -13,46 +17,58 @@ function clearAll() {
   secondNumber = '';
   operator = '';
   result = '';
-  document.getElementById('display').value = '';
+  display.value = '';
 }
 
 function setOperator(op) {
-  firstNumber = document.getElementById('display').value;
+  firstNumber = display.value;
   operator = op;
-  document.getElementById('display').value = '';
+  display.value = '';
 }
 
 function calculate() {
+  const displayValue = display.value;
   if (operator === '/') {
-    if (document.getElementById('display').value === '0') {
+    if (displayValue === '0') {
       alert("Cannot divide by zero");
       clearAll();
       return;
     }
   }
-  
-  // Store the second number and perform the calculation based on the operator
-  secondNumber = document.getElementById('display').value;
-  switch(operator) {
-    case '+':
-      result = parseFloat(firstNumber) + parseFloat(secondNumber);
-      break;
-    case '-':
-      result = parseFloat(firstNumber) - parseFloat(secondNumber);
-      break;
-    case '*':
-      result = parseFloat(firstNumber) * parseFloat(secondNumber);
-      break;
-    case '/':
-      result = parseFloat(firstNumber) / parseFloat(secondNumber);
-      break;
-    default:
-      result = '';
-      break;
-  }
 
-  document.getElementById('display').value = result;
-  firstNumber = result;
-  secondNumber = '';
-  operator = '';
+  secondNumber = Number(displayValue);
+  if (firstNumber && operator) {
+    result = eval(`${firstNumber} ${operator} ${secondNumber}`);
+    display.value = result;
+    firstNumber = result;
+    secondNumber = '';
+    operator = '';
+  } else {
+    firstNumber = Number(displayValue);
+    display.value = '';
+  }
 }
+
+// Attach event listeners to number buttons
+numberButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    appendToDisplay(button.value);
+  });
+});
+
+// Attach event listeners to operator buttons
+operatorButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    setOperator(button.value);
+  });
+});
+
+// Attach event listener to clear button
+clearButton.addEventListener('click', () => {
+  clearAll();
+});
+
+// Attach event listener to equals button
+equalsButton.addEventListener('click', () => {
+  calculate();
+});
